@@ -14,8 +14,10 @@ settings.configure(
     ROOT_URLCONF=__name__,  # Make this module the urlconf
     SECRET_KEY=get_random_string(50),  # We aren't using any security features but Django requires this setting
     INSTALLED_APPS=[
+        'django.contrib.staticfiles',
         'scout_apm.django',
     ],
+    STATIC_URL='/static/',
     SCOUT_MONITOR=True,
     SCOUT_KEY=os.environ['SCOUT_KEY'],
     SCOUT_NAME="Test App",
