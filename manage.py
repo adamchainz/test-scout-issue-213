@@ -8,12 +8,16 @@ from django.http import HttpResponse
 from django.urls import path
 from django.utils.crypto import get_random_string
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 settings.configure(
     # Django core
     ALLOWED_HOSTS=["*"],  # Disable host header validation
+    BASE_DIR=BASE_DIR,
     DEBUG=(os.environ.get("DEBUG", "") == "1"),
     INSTALLED_APPS=[
         'django.contrib.staticfiles',
+        'compressor',
         'scout_apm.django',
     ],
     LOGGING={
@@ -52,6 +56,12 @@ settings.configure(
     ROOT_URLCONF=__name__,  # Make this module the urlconf
     SECRET_KEY=get_random_string(50),  # We aren't using any security features but Django requires this setting
     # django.contrib.staticfiles
+    STATICFILES_FINDERS=[
+        'django.contrib.staticfiles.finders.FileSystemFinder',
+        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+        'compressor.finders.CompressorFinder',
+    ],
+    STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles'),
     STATIC_URL='/static/',
     # scout_apm
     SCOUT_MONITOR=True,

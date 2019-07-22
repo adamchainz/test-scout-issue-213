@@ -1,3 +1,4 @@
 django
+django-compressor
 gunicorn
 scout-apm
