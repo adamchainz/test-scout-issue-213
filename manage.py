@@ -1,7 +1,5 @@
 import atexit
-import faulthandler
 import os
-import signal
 import sys
 
 from django.conf import settings
@@ -25,18 +23,6 @@ def goodbye():
     AgentContext.socket().send(CoreAgentShutdown())
     AgentContext.socket().stop()
     print('Done, goodbye!')
-
-
-faulthandler.enable()
-
-
-def handler(signum, frame):
-    raise ValueError("Timed out!")
-
-
-# Set the signal handler and a 5-second alarm
-signal.signal(signal.SIGALRM, handler)
-signal.alarm(5)
 
 
 settings.configure(
