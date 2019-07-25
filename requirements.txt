@@ -9,6 +9,7 @@ chardet==3.0.4            # via requests
 django-appconf==1.0.3     # via django-compressor
 django-compressor==2.3
 django==1.11.22
+faulthandler==3.1
 gunicorn==19.9.0
 idna==2.8                 # via requests
 psutil==5.6.3             # via scout-apm
