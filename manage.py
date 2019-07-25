@@ -1,4 +1,5 @@
 import atexit
+import json
 import os
 import sys
 
@@ -10,6 +11,12 @@ from django.utils import html
 from django.utils.crypto import get_random_string
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+print(json.dumps(
+    {k: str(v) for k, v in os.environ.items()},
+    indent=4,
+    sort_keys=True,
+))
 
 
 @atexit.register
