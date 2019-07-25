@@ -12,17 +12,17 @@ from django.utils.crypto import get_random_string
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-@atexit.register
-def goodbye():
-    from scout_apm.core.context import AgentContext
+# @atexit.register
+# def goodbye():
+#     from scout_apm.core.context import AgentContext
 
-    class CoreAgentShutdown(object):
-        def message(self):
-            return {"CoreAgentShutdown": {}}
+#     class CoreAgentShutdown(object):
+#         def message(self):
+#             return {"CoreAgentShutdown": {}}
 
-    AgentContext.socket().send(CoreAgentShutdown())
-    AgentContext.socket().stop()
-    print('Done, goodbye!')
+#     AgentContext.socket().send(CoreAgentShutdown())
+#     AgentContext.socket().stop()
+#     print('Done, goodbye!')
 
 
 settings.configure(
