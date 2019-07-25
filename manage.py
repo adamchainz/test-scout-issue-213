@@ -1,4 +1,5 @@
 import os
+import signal
 import sys
 
 from django.conf import settings
@@ -9,6 +10,16 @@ from django.utils import html
 from django.utils.crypto import get_random_string
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def handler(signum, frame):
+    raise ValueError("Timed out!")
+
+
+# Set the signal handler and a 5-second alarm
+signal.signal(signal.SIGALRM, handler)
+signal.alarm(5)
+
 
 settings.configure(
     # Django core
