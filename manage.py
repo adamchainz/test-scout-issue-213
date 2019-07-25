@@ -1,3 +1,5 @@
+import atexit
+import faulthandler
 import os
 import signal
 import sys
@@ -10,6 +12,13 @@ from django.utils import html
 from django.utils.crypto import get_random_string
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+@atexit.register
+def goodbye():
+    print('Done, goodbye!')
+
+
+faulthandler.enable()
 
 
 def handler(signum, frame):
