@@ -8,7 +8,7 @@ certifi==2019.6.16        # via requests
 chardet==3.0.4            # via requests
 django-appconf==1.0.3     # via django-compressor
 django-compressor==2.3
-django==2.2.3
+django==1.11.22
 gunicorn==19.9.0
 idna==2.8                 # via requests
 psutil==5.6.3             # via scout-apm
@@ -18,5 +18,4 @@ requests==2.22.0          # via scout-apm
 rjsmin==1.1.0             # via django-compressor
 scout-apm==2.1.0
 six==1.12.0               # via django-appconf
-sqlparse==0.3.0           # via django
 urllib3==1.25.3           # via requests

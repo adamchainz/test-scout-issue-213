@@ -1,11 +1,11 @@
-import html
 import os
 import sys
 
 from django.conf import settings
+from django.conf.urls import url
 from django.core.wsgi import get_wsgi_application
 from django.http import HttpResponse
-from django.urls import path
+from django.utils import html
 from django.utils.crypto import get_random_string
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -72,11 +72,11 @@ settings.configure(
 
 def index(request):
     name = request.GET.get("name", "World")
-    return HttpResponse(f"Hello, {html.escape(name)}!")
+    return HttpResponse("Hello, " + html.escape(name) + "!")
 
 
 urlpatterns = [
-    path("", index),
+    url(r"^$", index),
 ]
 
 app = get_wsgi_application()
