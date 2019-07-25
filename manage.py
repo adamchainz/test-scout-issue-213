@@ -32,7 +32,6 @@ settings.configure(
     DEBUG=(os.environ.get("DEBUG", "") == "1"),
     INSTALLED_APPS=[
         'django.contrib.staticfiles',
-        'compressor',
         'scout_apm.django',
     ],
     LOGGING={
@@ -74,7 +73,6 @@ settings.configure(
     STATICFILES_FINDERS=[
         'django.contrib.staticfiles.finders.FileSystemFinder',
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-        'compressor.finders.CompressorFinder',
     ],
     STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles'),
     STATIC_URL='/static/',
