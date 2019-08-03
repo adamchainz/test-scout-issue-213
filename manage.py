@@ -1,4 +1,3 @@
-import atexit
 import json
 import os
 import sys
@@ -17,19 +16,6 @@ print(json.dumps(
     indent=4,
     sort_keys=True,
 ))
-
-
-@atexit.register
-def goodbye():
-    from scout_apm.core.context import AgentContext
-
-    class CoreAgentShutdown(object):
-        def message(self):
-            return {"CoreAgentShutdown": {}}
-
-    AgentContext.socket().send(CoreAgentShutdown())
-    AgentContext.socket().stop()
-    print('Done, goodbye!')
 
 
 settings.configure(
