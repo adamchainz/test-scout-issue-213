@@ -12,5 +12,5 @@ idna==2.8                 # via requests
 psutil==5.6.3             # via scout-apm
 pytz==2019.1              # via django
 requests==2.22.0          # via scout-apm
-https://github.com/scoutapp/scout_apm_python/archive/142500c47541a41cc86e90ac1a5f021736f1a3a5.tar.gz
+scout-apm==2.1.0
 urllib3==1.25.3           # via requests
